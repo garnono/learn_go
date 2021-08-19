@@ -15,6 +15,7 @@ func TestFunc() {
 		参数：无、单个、多个、不定；值传递 or 引用传递；作为参数；
 		返回：无、单个、多个；
 		方法：继承、重载
+		嵌套
 	*/
 
 	declareFunc()
@@ -92,6 +93,9 @@ func declareFunc() {
 
 	// 重写
 	fmt.Println("重写：", apple.getNum())
+
+	// 嵌套
+	fmt.Println("嵌套：", nest(1))
 }
 
 func optionFunc() {
@@ -221,4 +225,14 @@ func (a *Apple) getName() (name string) {
 // 重写
 func (a *Apple) getNum() (num int) {
 	return a.num * 10
+}
+
+// 嵌套
+func nest(a int) (sum int) {
+	if a > 5 {
+		a++
+		sum = nest(a)
+	}
+
+	return
 }
