@@ -99,12 +99,13 @@ var commands = map[string]func(){
 	"channel": TestChannel, // 数据类型：管道
 
 	"sentence":  TestSentence,  // 语句
-	"func":      TestFunc,      // 数据类型：方法
-	"interface": TestInterface, // 数据类型：接口
-
+	"func":      TestFunc,      // 方法
+	"interface": TestInterface, // 接口
+	"list":      TestList,      // 列表
+	"nil":       TestNil,       // nil
+	"panic":     TestPanic,     // 错误
 	// 并发
-	// 错误
-	// 类型转化
+	"type_conversion": TestTypeConversion, // 类型转化
 
 }
 
@@ -127,6 +128,6 @@ func call(name string, params ...interface{}) {
 
 // 此处作为 step_one 内容的入口
 func TestRun(c string) {
-	fmt.Println("-- step one start to test ---------")
+	fmt.Println("--------- step one start to test ---------")
 	call(c)
 }

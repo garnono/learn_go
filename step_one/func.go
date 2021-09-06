@@ -16,6 +16,7 @@ func TestFunc() {
 		返回：无、单个、多个；
 		方法：继承、重载
 		嵌套
+		闭包
 	*/
 
 	declareFunc()

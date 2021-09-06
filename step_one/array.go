@@ -36,8 +36,16 @@ func declareArray() {
 	tArray2[0] = [3]int{}
 	tArray2[0][0] = 1
 	fmt.Println("多维数组", tArray2)
+
+	// 根据初始化的数目计算长度
+	tArray3 := [...]int{1, 2, 3}
+	printArray(tArray3, 3, "...")
 }
 
 func optionArray() {
-
+	// 相等：前提——需要类型完全一样；
+	a := [2]int{1, 2}
+	b := [...]int{1, 2}
+	c := [2]int{2, 1}
+	fmt.Println(a == b, a == c, b == c) // "true false false"
 }

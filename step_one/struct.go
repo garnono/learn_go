@@ -8,10 +8,10 @@ func TestStruct() {
 			如果对应与php的结构，struct对应class的名称和属性，struct的方法对应class的方法
 		声明：
 			type struct_variable_type struct {
-			   member definition;
-			   member definition;
+			   member definition
+			   member definition
 			   ...
-			   member definition;
+			   member definition
 			}
 	*/
 

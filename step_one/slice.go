@@ -16,7 +16,7 @@ func TestSlice() {
 }
 
 func printSlice(s []int, num uint8, desc string) {
-	fmt.Println("slice", num, s, desc, "len:", len(s), "cap:", cap(s))
+	fmt.Println(desc, "slice", num, s, "len:", len(s), "cap:", cap(s))
 }
 
 func declareSlice() {
@@ -24,7 +24,15 @@ func declareSlice() {
 	if tSlice1 == nil { // 数组不能通过 nil 来判断
 		fmt.Println("slice 1 is nil")
 	}
-	printSlice(tSlice1, 1, "默认值")
+	printSlice(tSlice1, 1, "仅声明：")
+	tSlice1 = make([]int, 0) // 初始化
+	printSlice(tSlice1, 1, "初始化：")
+	if tSlice1 != nil {
+		fmt.Println("slice 1 is not nil")
+	}
+	//tSlice1[1] = 1 // 修改，超出范围会报错
+	tSlice1 = append(tSlice1, 1)
+	printSlice(tSlice1, 1, "赋值后")
 	tSlice2 := make([]int, 3, 4)
 	printSlice(tSlice2, 2, "make")
 
@@ -40,6 +48,14 @@ func declareSlice() {
 	tSlice3 := tArray[2:5]
 	fmt.Println("slice[1]:", tSlice3[1])
 	printSlice(tSlice3, 3, "劫取")
+
+	// 动态填充
+	tSlice4 := make([]int, 5, 5)
+	tSlice4 = append(tSlice4, 1)
+
+	// 多维切片
+	tSlice5 := [][]int{{1, 2, 3}, {4, 5, 6}}
+	fmt.Println("slice 5", tSlice5, "多维", "len:", len(tSlice5), "cap:", cap(tSlice5))
 }
 
 func optionSlice() {
@@ -57,4 +73,11 @@ func optionSlice() {
 	slice2 := make([]int, 3, 4)
 	copy(slice2, slice1) // ⚠️ 只复制所能承受的长度，不会自动扩展
 	printSlice(slice2, 2, "copy")
+
+	// 删除：获取需要的内容，再重新组合
+	slice3 := []int{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
+	slice4 := append(slice3[:2], slice3[3:5]...) // 删除第三个元素：2
+	slice5 := append(slice4, slice3[9])          // 删除：5，6，7，8
+	printSlice(slice5, 5, "delete")
+
 }

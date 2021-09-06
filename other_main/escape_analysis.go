@@ -29,6 +29,7 @@ func dummy2() *Data {
 	return &c
 }
 
+// go run -gcflags "-m -l" escape_analysis.go
 func main() {
 	// 1
 	var a int
